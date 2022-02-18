@@ -1,11 +1,3 @@
-#class SavData:
-    #def __init__(self, function):
-        #self.fun = function()
-
-    #def __call__(self):
-        #print("lol")
-        #self.fun()
-        #print("bol")
 
 def sav_data(fun):
     def wrapper(*args):
