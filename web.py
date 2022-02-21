@@ -15,9 +15,6 @@ class WebRequestSoup:
         self.prod_name = product
         self.product_first_name = produkt_only_n
 
-    def url_conv(self, *args):
-        self.url_w = args
-
     def request_status_code(self):
         return self.web_req.status_code
 
@@ -38,9 +35,9 @@ class SearchDataInHtml:
         chceckk = re.search(self.prod_nam, self.soupp.text)
         chceckk_two = re.search(self.prod_nam, self.soupp.text)
         return self.prduct_v_name if chceckk or chceckk_two \
-            else f"Produkt ist nicht in Html Datei ,{self.prduct_v_name}"  # check if produkt in html
+            else f"Produkt ist nicht in Html Datei ,{self.prduct_v_name}"  # check if produkt in html (comprehension)
 
-    @decoo_save_data.sav_data  # save data in data.txt
+    @decoo_save_data.sav_data  # deco for save data in data.txt
     def product_name_print(self):
         return self.prduct_v_name
 
