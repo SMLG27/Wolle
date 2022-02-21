@@ -8,13 +8,15 @@ class WebRequestSoup:
 
     def __init__(self, product, produkt_only_n):
         # https://www.wollplatz.de/#sqr:(q[DMC%20Natura%20XL])
-        self.url_liferung = "https://www.wollplatz.de/versandkosten-und-lieferung"
         self.url_w = "https://www.wollplatz.de/wolle/" + produkt_only_n.lower() + "/" + product.lower()
         self.web_req = requests.get(self.url_w)
-        self.soup = BeautifulSoup(self.web_req.text, "html.parser")
+        self.soup = BeautifulSoup(self.web_req.text, "html.parser")  # lxml
         self.searching = None
         self.prod_name = product
         self.product_first_name = produkt_only_n
+
+    def url_conv(self, *args):
+        self.url_w = args
 
     def request_status_code(self):
         return self.web_req.status_code
@@ -38,7 +40,7 @@ class SearchDataInHtml:
         return self.prduct_v_name if chceckk or chceckk_two \
             else f"Produkt ist nicht in Html Datei ,{self.prduct_v_name}"  # check if produkt in html
 
-    @decoo_save_data.sav_data # save data in data.txt
+    @decoo_save_data.sav_data  # save data in data.txt
     def product_name_print(self):
         return self.prduct_v_name
 
